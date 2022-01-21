@@ -5,13 +5,15 @@
  * @param {!express:Response} res HTTP response context.
  */
 const { default: axios } = require("axios");
-const moment = require("moment");
-require("moment/locale/nl");
-moment.locale("nl");
 const admin = require("firebase-admin");
 const { initializeApp, cert } = require("firebase-admin/app");
 const { getFirestore, Timestamp, FieldValue } = require("firebase-admin/firestore");
 const firebaseCredentials = require("./firebase.json");
+const moment = require("moment");
+
+require("moment/locale/nl");
+moment.locale("nl");
+
 initializeApp({ credential: cert(firebaseCredentials) });
 
 exports.rivm_cases_deaths_hospitalizations = async (req, res) => {
@@ -23,7 +25,6 @@ exports.rivm_cases_deaths_hospitalizations = async (req, res) => {
   const { data: hospitalData } = await axios({ url: "https://data.rivm.nl/covid-19/COVID-19_ziekenhuisopnames.json" });
 
   let result = {};
-  let sum = 0;
 
   // cases/deaths
   data.forEach((d) => {
@@ -89,6 +90,5 @@ exports.rivm_cases_deaths_hospitalizations = async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
   res.set("Access-Control-Allow-Methods", "GET");
 
-  // return res.status(200).send(template.trim());
-  return res.status(200).send(`${sum}`);
+  return res.status(200).send(template.trim());
 };
