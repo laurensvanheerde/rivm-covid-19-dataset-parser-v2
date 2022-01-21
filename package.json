@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "@google-cloud/functions-framework": "^2.1.0"
+  },
+  "scripts": {
+    "start": "npx functions-framework --target=rivm_cases_deaths_hospitalizations [--signature-type=http]"
+  },
+  "dependencies": {
+    "axios": "^0.25.0",
+    "firebase-admin": "^10.0.1",
+    "moment": "^2.29.1",
+    "node-fetch": "^2.6.1"
+  }
+}
