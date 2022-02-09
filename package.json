@@ -3,7 +3,8 @@
     "@google-cloud/functions-framework": "^2.1.0"
   },
   "scripts": {
-    "start": "npx functions-framework --target=rivm_cases_deaths_hospitalizations [--signature-type=http]"
+    "start": "npx functions-framework --target=rivm_cases_deaths_hospitalizations [--signature-type=http]",
+    "deploy": "gcloud functions deploy rivm_cases_deaths_hospitalizations --entry-point rivm_cases_deaths_hospitalizations --runtime nodejs16 --trigger-http --memory 512MB --timeout 240 --region europe-west1"
   },
   "dependencies": {
     "axios": "^0.25.0",

@@ -1,1 +1,0 @@
-gcloud functions deploy rivm_cases_deaths_hospitalizations --entry-point rivm_cases_deaths_hospitalizations --runtime nodejs16 --trigger-http --memory 512MB --timeout 120 --region europe-west1
