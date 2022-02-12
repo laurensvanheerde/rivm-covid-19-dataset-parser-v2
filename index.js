@@ -5,9 +5,8 @@
  * @param {!express:Response} res HTTP response context.
  */
 const { default: axios } = require("axios");
-const admin = require("firebase-admin");
 const { initializeApp, cert } = require("firebase-admin/app");
-const { getFirestore, Timestamp, FieldValue } = require("firebase-admin/firestore");
+const { getFirestore } = require("firebase-admin/firestore");
 const firebaseCredentials = require("./firebase.json");
 const moment = require("moment");
 
@@ -32,7 +31,6 @@ exports.rivm_cases_deaths_hospitalizations = async (req, res) => {
     if (!result[day]) result[day] = { day: d["Date_of_publication"], deceased: 0, reported: 0, hospital: 0 };
     result[day].reported += d["Total_reported"];
     result[day].deceased += d["Deceased"];
-    sum += d["Total_reported"];
   });
 
   // hospital admissions

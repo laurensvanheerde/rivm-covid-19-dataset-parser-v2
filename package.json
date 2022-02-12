@@ -4,7 +4,7 @@
   },
   "scripts": {
     "start": "npx functions-framework --target=rivm_cases_deaths_hospitalizations [--signature-type=http]",
-    "deploy": "gcloud functions deploy rivm_cases_deaths_hospitalizations --entry-point rivm_cases_deaths_hospitalizations --runtime nodejs16 --trigger-http --memory 512MB --timeout 240 --region europe-west1"
+    "deploy": "gcloud functions deploy rivm_cases_deaths_hospitalizations --project covid19-datasets-parsers --entry-point rivm_cases_deaths_hospitalizations --runtime nodejs16 --trigger-http --memory 1024MB --timeout 240 --region europe-west1"
   },
   "dependencies": {
     "axios": "^0.25.0",
